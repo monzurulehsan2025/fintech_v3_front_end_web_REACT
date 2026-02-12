@@ -17,6 +17,5 @@ export const metrics = [
 export const benefits = [
   { id: 1, title: "Global Lounge Collection", desc: "Access to 1,400+ airport lounges worldwide.", icon: "Lounge" },
   { id: 2, title: "Fine Hotels + Resorts", desc: "Average total value of $600 in perks per stay.", icon: "Hotel" },
-  { id: 3, title: "$200 Uber Cash", desc: "Enjoy Uber VIP status and $15 in Uber Cash monthly.", icon: "Car" },
-  { id: 4, title: "Clear® Plus Credit", desc: "Up to $189 back per year on your membership.", icon: "Shield" }
+  { id: 3, title: "$200 Uber Cash", desc: "Enjoy Uber VIP status and $15 in Uber Cash monthly.", icon: "Car" }
 ];
