@@ -13,13 +13,6 @@ export const metrics = [
   { label: "Next Payment", value: "$1,240.50", sub: "Due in 12 days", type: "alert" }
 ];
 
-export const spendData = [
-  { category: "Travel", value: 4500, color: "#0070f3" },
-  { category: "Dining", value: 2100, color: "#d4af37" },
-  { category: "Shopping", value: 1800, color: "#e2e8f0" },
-  { category: "Groceries", value: 1200, color: "#48bb78" },
-  { category: "Business", value: 3200, color: "#9f7aea" }
-];
 
 export const benefits = [
   { id: 1, title: "Global Lounge Collection", desc: "Access to 1,400+ airport lounges worldwide.", icon: "Lounge" },

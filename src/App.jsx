@@ -17,14 +17,7 @@ import {
   Hotel,
   Shield
 } from 'lucide-react';
-import {
-  PieChart,
-  Pie,
-  Cell,
-  ResponsiveContainer,
-  Tooltip
-} from 'recharts';
-import { cardData, metrics, spendData, benefits } from './mockData';
+import { cardData, metrics, benefits } from './mockData';
 import './index.css';
 
 const IconMap = {
@@ -136,69 +129,30 @@ const Dashboard = () => {
             </div>
           </div>
 
-          {/* Bottom Section */}
-          <div className="lg-grid-layout" style={{ gridTemplateColumns: '1.5fr 1fr' }}>
-            {/* Spend Breakdown */}
-            <motion.div variants={itemVariants} className="glass-card">
-              <h3 className="mb-8">Spend Breakdown</h3>
-              <div style={{ height: 300 }}>
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <Pie
-                      data={spendData}
-                      cx="50%"
-                      cy="50%"
-                      innerRadius={80}
-                      outerRadius={100}
-                      paddingAngle={8}
-                      dataKey="value"
-                    >
-                      {spendData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.color} stroke="none" />
-                      ))}
-                    </Pie>
-                    <Tooltip
-                      contentStyle={{ backgroundColor: '#141b2d', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }}
-                      itemStyle={{ color: '#fff' }}
-                    />
-                  </PieChart>
-                </ResponsiveContainer>
-              </div>
-              <div className="flex justify-center gap-6 mt-4">
-                {spendData.slice(0, 3).map((item, i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <div style={{ width: 10, height: 10, borderRadius: '50%', backgroundColor: item.color }}></div>
-                    <span className="text-xs text-gray-400">{item.category}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Benefits */}
-            <motion.div variants={itemVariants} className="glass-card">
-              <div className="flex justify-between items-center mb-6">
-                <h3 className="gold-gradient">Elite Benefits</h3>
-                <span className="text-xs text-blue-400 font-bold cursor-pointer">View All</span>
-              </div>
-              <div className="flex flex-col gap-4">
-                {benefits.map((benefit) => {
-                  const Icon = IconMap[benefit.icon] || Gift;
-                  return (
-                    <div key={benefit.id} className="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition-all cursor-pointer">
-                      <div className="flex items-center justify-center" style={{ width: 44, height: 44, backgroundColor: 'rgba(0,112,243,0.1)', borderRadius: 12, color: 'var(--accent-blue)' }}>
-                        <Icon size={20} />
-                      </div>
-                      <div className="flex-1">
-                        <div className="text-sm font-bold">{benefit.title}</div>
-                        <div className="text-xs text-gray-400">{benefit.desc}</div>
-                      </div>
-                      <ChevronRight size={14} className="text-gray-400" />
+          {/* Bottom Section - Benefits */}
+          <motion.div variants={itemVariants} className="glass-card">
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="gold-gradient">Elite Benefits</h3>
+              <span className="text-xs text-blue-400 font-bold cursor-pointer">View All</span>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+              {benefits.map((benefit) => {
+                const Icon = IconMap[benefit.icon] || Gift;
+                return (
+                  <div key={benefit.id} className="flex items-center gap-4 p-4 rounded-xl hover:bg-white/5 transition-all cursor-pointer border border-white/5">
+                    <div className="flex items-center justify-center" style={{ width: 44, height: 44, backgroundColor: 'rgba(0,112,243,0.1)', borderRadius: 12, color: 'var(--accent-blue)' }}>
+                      <Icon size={20} />
                     </div>
-                  );
-                })}
-              </div>
-            </motion.div>
-          </div>
+                    <div className="flex-1">
+                      <div className="text-sm font-bold">{benefit.title}</div>
+                      <div className="text-xs text-gray-400">{benefit.desc}</div>
+                    </div>
+                    <ChevronRight size={14} className="text-gray-400" />
+                  </div>
+                );
+              })}
+            </div>
+          </motion.div>
         </motion.div>
       </main>
     </div>
